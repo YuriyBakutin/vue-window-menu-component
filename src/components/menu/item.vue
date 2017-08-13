@@ -45,7 +45,7 @@ export default {
       ulWidthString: '140px',
       l2LeftShiftString: '0',
       newThreeDots: false,
-      localeDict: null,
+      currentLocaleDict: null,
       ulVisibility: 'hidden',
       menuEventBusHandlers: {}
     }
@@ -86,10 +86,11 @@ export default {
       return this.menuLevel === null
     },
     localisedItemName: function () {
-      if(this.localeDict && this.localeDict[this.itemName]) {
-        return this.spacesToNonBreacking(this.localeDict[this.itemName])
+      return this.spacesToNonBreacking(this.itemName)
+      if(this.currentLocaleDict && this.currentLocaleDict[this.itemName]) {
+        return this.spacesToNonBreacking(this.currentLocaleDict[this.itemName])
       }
-      return this.itemName
+      return this.spacesToNonBreacking(this.itemName)
     }
   },
   methods: {
@@ -157,8 +158,10 @@ export default {
 
     MenuEventBus.$on(
       'setLocaleDict',
-      (localeDict) => {
-        this.localeDict = localeDict
+      (currentLocaleDict) => {
+        if (currentLocaleDict) {
+          this.currentLocaleDict = currentLocaleDict
+        }
       }
     )
 

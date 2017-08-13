@@ -82,7 +82,6 @@ export default {
 */
       localeDict: {
         'ru': {
-          '_locale_' : 'ru',
           'File': 'Файл',
           'New': 'Новый',
           'Document': 'Документ',
@@ -103,28 +102,6 @@ export default {
           'Preferences': 'Настройки',
           'Help': 'Помощь',
           'About': 'О программе',
-        },
-        'en': {
-          '_locale_' : 'en',
-          'File': 'File',
-          'New': 'New',
-          'Document': 'Document',
-          'Project': 'Project',
-          'Open': 'Open',
-          'Save': 'Save',
-          'Save_as': 'Save as',
-          'Edit': 'Edit',
-          'Undo': 'Undo',
-          'Redo': 'Redo',
-          'Cut': 'Cut',
-          'Copy': 'Copy',
-          'Paste': 'Paste',
-          'Tools': 'Tools',
-          'Macroses': 'Macroses',
-          'Options': 'Options',
-          'Preferences': 'Preferences',
-          'Help': 'Help',
-          'About': 'About',
         }
       },
       hotKeyCodeDict: {
@@ -255,10 +232,11 @@ export default {
   },
   mounted () {
     if(this.localeDict[this.locale]) {
-      MenuEventBus.$emit('setLocaleDict',this.localeDict[this.locale])
+      MenuEventBus.$emit('setLocaleDict', this.localeDict[this.locale])
     } else {
-      if(this.locale === 'en') return
-      console.log('Warning: The requested locale is missing in the dictionary!') //
+      if(this.locale !== 'en') {
+        console.log('Warning: The required locale is missing in the dictionary!') //
+      }
     }
 
     window.addEventListener('keyup', this.keydownListner.bind(this))

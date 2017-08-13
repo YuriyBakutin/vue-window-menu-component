@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <windowmenu
-      locale="ru"
+      locale="en"
       v-on:menuItemActivate="menuEventHandler">
     </windowmenu>
   </div>
