@@ -2,7 +2,7 @@
 
 > Three-level window menu, with hot keys and language locale. It is completely init by a simple tree of tags.
 
-> Interactive demo version: <https://jsfiddle.net/yuriybakutin/4kkjy0wd/>
+> Interactive demo version: <https://jsfiddle.net/yuriybakutin/jn29x9zc/>
 
 ## Build Setup
 
