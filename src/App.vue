@@ -4,6 +4,7 @@
       locale="en"
       v-on:menuItemActivate="menuEventHandler">
     </windowmenu>
+    <div id="bottomArea"></div>
   </div>
 </template>
 
@@ -32,5 +33,10 @@ export default {
 * {
   margin: 0;
   padding: 0;
+}
+#bottomArea {
+  width: 100%;
+  height: 100%;
+  background-color: blue;
 }
 </style>

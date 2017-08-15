@@ -86,7 +86,6 @@ export default {
       return this.menuLevel === null
     },
     localisedItemName: function () {
-      return this.spacesToNonBreacking(this.itemName)
       if(this.currentLocaleDict && this.currentLocaleDict[this.itemName]) {
         return this.spacesToNonBreacking(this.currentLocaleDict[this.itemName])
       }
@@ -132,10 +131,12 @@ export default {
     defineNextLevelMenuWidth () {
       if (!this.isSubmenu) return
 
+      this.$refs.dummyMenuBlock.style.display = 'block'
       this.ulWidth = this.$refs.dummyMenuBlock.clientWidth + MENU_BLOCK_MARGIN
+      this.$refs.dummyMenuBlock.style.display = 'none'
       this.ulWidthString = this.ulWidth + 'px'
 
-      if(this.isL0 && this.isSubmenu) {
+      if (this.isL0 && this.isSubmenu) {
         MenuEventBus.$emit(this.itemKey + '_ulWidth', this.ulWidth)
       }
 
@@ -237,7 +238,7 @@ ul {
   list-style: none;
   &.dummyMenuBlock {
     visibility: hidden;
-    display: block;
+    display: none;
     position: absolute;
     top: $menuHeight;
     left: 0;
@@ -271,7 +272,9 @@ ul {
   text-align: right;
 }
 li {
+  display: none;
   &.l0 {
+    display: block;
     float: left;
     line-height: $menuHeight;
     position: relative;
@@ -330,10 +333,16 @@ li {
 li.l0:hover > ul {
   display: block;
 }
+li.l0:hover > ul > li {
+  display: block;
+}
 li.l1:not(.separator):not(.inactive):hover {
   background-color: $l1HoverBackgroundColor;
 }
 li.l1:hover > ul {
+  display: block;
+}
+li.l1:hover > ul > li {
   display: block;
 }
 li.l2:not(.separator):not(.inactive):hover {

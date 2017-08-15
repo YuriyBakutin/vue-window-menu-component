@@ -48,9 +48,10 @@
         <item itemName="Help" hotKey="Ctrl+H"></item>
         <item itemName="About"></item>
       </item>
-    </ul>
+
 <!-- End - Menu Tree -->
 
+    </ul>
     <div class="menu0BackgroundBox">
     </div>
   </div>
@@ -276,7 +277,7 @@ $menuHeight: $menuFontSize * 2;
     z-index: 10;
 }
 ul {
-    display: block;
+    display: block; /* display: block; */
     margin: 0;
     padding: 0;
     list-style: none;
